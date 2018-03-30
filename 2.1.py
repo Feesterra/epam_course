@@ -1,16 +1,24 @@
 def intersect(*args):
-    result = set(args[0])
-    for i in range(1, len(args)):
-        result = result & set(args[i])
-    print(result)
+    res = []
+    result =[]
+    count = len(args)
+    for arg in args:
+        arg = list(arg)
+        res.extend(arg)
+    for el in res:
+        num = res.count(el)
+        if num == count:
+            result.append(el)
+    print(set(result))
 
 
 def union(*args):
-    result = set(args[0])
-    for i in range(1, len(args)):
-        result = result | set(args[i])
-    print(result)
+    res = []
+    for arg in args:
+        arg = list(arg)
+        res.extend(arg)
+    print(set(res))
 
 
-intersect('spam', 'cams', 'trapse')
-union('spam', 'cams', 'trapse')
+intersect('spam', 'scamp', 'trapse')
+union('spam', 'scamp', 'trapse')
