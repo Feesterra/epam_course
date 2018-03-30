@@ -1,4 +1,9 @@
-def change(a):
+def change(a) -> int:
+    """Function changes string to int represent the ASCII code for each char in the string.
+    :param a: string to change
+    :type a: str
+    :returns: int"""
+    
     result = 0
     for elem in a:
         ras = 0
@@ -8,7 +13,7 @@ def change(a):
             ras += 1
         result *= 10**ras
         result += ord(elem)
-    print(result)
+    return result
 
 
-change('abcd')
+print(change('abcd'))
