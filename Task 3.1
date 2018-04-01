@@ -1,0 +1,20 @@
+def change_rec(a) -> int:
+    """Function changes string to int represent the ASCII code for each char in the string throw recursion.
+
+    :param a: string to change
+    :type a: str
+    :returns: int
+    """
+    result = ""
+
+    def _change_rec(a):
+        if len(a) != 0:
+            nonlocal result
+            result += str(ord(a[0]))
+            _change_rec(a[1:])
+
+    _change_rec(a)
+    return int(result)
+
+
+print(change_rec('abcd'))
