@@ -1,4 +1,3 @@
-
 def query(collection: list, select: list, *field_filter: list) -> list:
     """Creates new list of data from the source list according to selected fields.
 
