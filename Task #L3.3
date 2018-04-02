@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+def validate(low_bound=0, upper_bound=256):
+    """Estimates function parameters (there should be three of them between low_bound and upper_bound). If they aren't,
+    prints "Function call is not valid!".
+
+    :param low_bound: int. 0 by default
+    :param upper_bound: int. 256 by default
+    :return: the result of calling function
+    """
+
+    def decorator(func):
+        @functools.wraps(func)
+        def inner(*args):
+            if len(args) == 3:
+                for arg in args:
+                    if low_bound <= arg <= upper_bound:
+                        return func(*args)
+                    else:
+                        print('Function call is not valid!')
+                        break
+            else:
+                print('Function call is not valid!')
+        return inner
+    return decorator
+
+
+@validate()
+def set_pixel(*pixel_values):
+    """Creates a pixel."""
+
+    print('Pixel created!')
+
+
+set_pixel(31, 40, 34)
+set_pixel(2598, -20, 47)
