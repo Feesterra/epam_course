@@ -1,0 +1,53 @@
+#!/usr/bin/env python3.6
+class Wine:
+    """Class contains all to represent wine."""
+
+    def __init__(self, name, label, country, date_release, info):
+        self.name = name
+        self.label = label
+        self.country = country
+        self.date_release = date_release
+        assert 1000 <= date_release <= 2018, "Year must be relevant."
+        self.info = info
+
+    def get_wine(self, name: str):
+        """Calls other method to get information to a particular wine.
+        :param name: name of wine
+        :type name: str
+        """
+
+        if name in self.__dict__.values():
+            self.__str__()
+
+    def count_age(self, name, current_year: int):
+        """Counts age of a particular wine.
+        :param name name of wine
+        :type name: str
+        :param current_year: year
+        :type current_year: int
+        """
+
+        if name in self.__dict__.values():
+            age = current_year - self.date_release
+            print(age)
+
+    def __str__(self):
+        """Prints formated info about wine."""
+
+        print("Name: {name}; Label: {label}; Country: {country}; "
+              "Year: {year}; Comments: {coms}".format(name=self.name, label=self.label, country=self.country,
+                                                      year=self.date_release, coms=self.info))
+
+
+if __name__ == '__main__':
+    list_wine = []
+    nap = Wine("vasa", 'borgogn', 'France', 1955, 'some info\n'
+                                                  'that is here')
+    list_wine.append(nap)
+    cog = Wine('mary', 'product', 'Italy', 2001, 'red semi-sweet')
+    list_wine.append(cog)
+    for wine in list_wine:
+        wine.get_wine('mary')
+        wine.get_wine('vasa')
+        wine.count_age('vasa', 2018)
+        wine.count_age('mary', 2018)
